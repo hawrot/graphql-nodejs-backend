@@ -54,6 +54,8 @@ app.use((req, res, next) => {
   }
   next();
 });
+const auth = require('./middleware/auth');
+app.use(auth);
 
 app.use('/graphql', graphqlHttp({
   schema: graphqlSchema,
