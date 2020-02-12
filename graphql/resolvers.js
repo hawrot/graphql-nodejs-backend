@@ -229,7 +229,7 @@ module.exports = {
         await user.save();
         return true;
     },
-    user: async function(args, req){
+    user: async function(args, req) {
         if (!req.isAuth) {
             const error = new Error('Not authenticated!');
             error.code = 401;
@@ -241,9 +241,9 @@ module.exports = {
             error.code = 404;
             throw error;
         }
-        return {...user._doc, _id: user.id.toString()};
+        return { ...user._doc, _id: user._id.toString() };
     },
-    updateStatus: async function({status}, req) {
+    updateStatus: async function({ status }, req) {
         if (!req.isAuth) {
             const error = new Error('Not authenticated!');
             error.code = 401;
@@ -257,6 +257,6 @@ module.exports = {
         }
         user.status = status;
         await user.save();
-        return {...user._doc, _id : user._id.toString()};
+        return { ...user._doc, _id: user._id.toString() };
     }
 };
